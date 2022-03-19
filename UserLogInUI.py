@@ -16,8 +16,6 @@ class Ui_MainWindow(object):
     def ClickedEnter(self):
         user = User(self.UserName.text(),self.Password.text(),self.AuthKey.text())
         user.PrintName()
-        
-
 
 
     def setupUi(self, MainWindow):

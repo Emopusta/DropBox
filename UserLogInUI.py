@@ -9,13 +9,14 @@
 
 from User import User
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from UserManager import UserManager
 
 class Ui_MainWindow(object):
 
     def ClickedEnter(self):
         user = User(self.UserName.text(),self.Password.text(),self.AuthKey.text())
-        user.PrintName()
+        userManager = UserManager()
+        print(userManager.PrintName(user))
 
 
     def setupUi(self, MainWindow):
@@ -70,7 +71,7 @@ class Ui_MainWindow(object):
         self.AuthKeyLabel.setText(_translate("MainWindow", "Auth Key"))
         self.Register.setText(_translate("MainWindow", "Kayit Ol"))
 
-
+"""
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -78,4 +79,4 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec_())"""

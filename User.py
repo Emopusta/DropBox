@@ -8,7 +8,6 @@ class User:
 
     def PrintName(self):
         print(self.userName)
-        print("deneme")
 
     def LogIn(self):
         return 0

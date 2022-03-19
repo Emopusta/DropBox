@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
 
-    def Clicked(self):
+    def ClickedEnter(self):
         user = User(self.UserName.text(),self.Password.text(),self.AuthKey.text())
         user.PrintName()
 
@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
         self.Enter = QtWidgets.QPushButton(self.centralwidget)
         self.Enter.setGeometry(QtCore.QRect(250, 110, 75, 23))
         self.Enter.setObjectName("Enter")
-        self.Enter.clicked.connect(self.Clicked)
+        self.Enter.clicked.connect(self.ClickedEnter)
         self.AuthKeyLabel = QtWidgets.QLabel(self.centralwidget)
         self.AuthKeyLabel.setGeometry(QtCore.QRect(30, 80, 47, 13))
         self.AuthKeyLabel.setObjectName("AuthKeyLabel")

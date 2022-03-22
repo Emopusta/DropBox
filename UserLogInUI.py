@@ -14,7 +14,7 @@ from UserManager import UserManager
 class Ui_MainWindow(object):
 
     def ClickedEnter(self):
-        user = User(self.UserName.text(),self.Password.text(),self.AuthKey.text())
+        user = User(self.UserName.text(),self.Password.text())
         userManager = UserManager()
         print(userManager.PrintName(user))
 

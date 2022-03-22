@@ -41,12 +41,6 @@ class Ui_MainWindow(object):
         self.Enter.setGeometry(QtCore.QRect(250, 110, 75, 23))
         self.Enter.setObjectName("Enter")
         self.Enter.clicked.connect(self.ClickedEnter)
-        self.AuthKeyLabel = QtWidgets.QLabel(self.centralwidget)
-        self.AuthKeyLabel.setGeometry(QtCore.QRect(30, 80, 47, 13))
-        self.AuthKeyLabel.setObjectName("AuthKeyLabel")
-        self.AuthKey = QtWidgets.QLineEdit(self.centralwidget)
-        self.AuthKey.setGeometry(QtCore.QRect(110, 80, 221, 20))
-        self.AuthKey.setObjectName("AuthKey")
         self.Register = QtWidgets.QPushButton(self.centralwidget)
         self.Register.setGeometry(QtCore.QRect(160, 110, 75, 23))
         self.Register.setObjectName("Register")
@@ -68,7 +62,6 @@ class Ui_MainWindow(object):
         self.UserNameLabel.setText(_translate("MainWindow", "Kullanici Adi"))
         self.PasswordLabel.setText(_translate("MainWindow", "     Sifre"))
         self.Enter.setText(_translate("MainWindow", "Giris"))
-        self.AuthKeyLabel.setText(_translate("MainWindow", "Auth Key"))
         self.Register.setText(_translate("MainWindow", "Kayit Ol"))
 
 """

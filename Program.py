@@ -1,16 +1,16 @@
 from UserManager import *
-from UserLogInUI import Ui_MainWindow
+from UserLogInUI import Ui_LogInWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
 
 class Program:
 
     def __init__(self):
-        import sys
         app = QtWidgets.QApplication(sys.argv)
-        MainWindow = QtWidgets.QMainWindow()
-        ui = Ui_MainWindow()
-        ui.setupUi(MainWindow)
-        MainWindow.show()
+        LogInWindow = QtWidgets.QMainWindow()
+        ui = Ui_LogInWindow()
+        ui.setupUi(LogInWindow)
+        LogInWindow.show()
         sys.exit(app.exec_())
             
 

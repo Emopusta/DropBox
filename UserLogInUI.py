@@ -50,9 +50,6 @@ class Ui_LogInWindow(object):
         self.Enter.setGeometry(QtCore.QRect(250, 110, 75, 23))
         self.Enter.setObjectName("Enter")
         self.Enter.clicked.connect(self.ClickedEnter)
-        self.Register = QtWidgets.QPushButton(self.centralwidget)
-        self.Register.setGeometry(QtCore.QRect(160, 110, 75, 23))
-        self.Register.setObjectName("Register")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 356, 21))
@@ -71,5 +68,4 @@ class Ui_LogInWindow(object):
         self.UserNameLabel.setText(_translate("MainWindow", "Kullanici Adi"))
         self.PasswordLabel.setText(_translate("MainWindow", "     Sifre"))
         self.Enter.setText(_translate("MainWindow", "Giris"))
-        self.Register.setText(_translate("MainWindow", "Kayit Ol"))
 

@@ -12,7 +12,9 @@ class Program:
         ui.setupUi(LogInWindow)
         LogInWindow.show()
         sys.exit(app.exec_())
-        #asdasd
+        #denemededemde
+        #drfqawetgqaewrg
+
             
 
 x = Program()

@@ -14,17 +14,22 @@ from UserManager import UserManager
 from MainWindowUI import Ui_MainWindow
 
 class Ui_LogInWindow(object):
+    
+    def GetUser(self):
+        return self.user
 
     def ClickedEnter(self):
-        user = User(self.UserName.text(),self.Password.text())
+        self.user = User(self.UserName.text(),self.Password.text())
         #userManager = UserManager()
         #dropboxManager = DropboxManager(user) 
         #print(userManager.PrintName(user))
-        if user.userName == "Emre" :
+        if self.user.userName == "Emre" :
             self.MainWindow = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow()
             self.ui.setupUi(self.MainWindow)
+            self.ui.ListItemsToListView()
             self.MainWindow.show()
+            
             
 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindowUI.ui'
+# Form implementation generated from reading ui file 'MainWindowUI2.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -9,9 +9,37 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import dropbox as dropbox
+from DropboxManager import DropboxManager
+from User import User
 
 class Ui_MainWindow(object):
+    
+    def ReturnFileNames(self,dbx):
+        x = str(dbx.files_list_folder("")).split(",")
+        listOfNames = []
+        for i in x:
+            if i.find("name=")==1:
+                listOfNames.append(i)
+        return listOfNames
+    
+    def ShowInListView(self,listOfNames):
+        for i in listOfNames:
+            self.listWidget.addItem(i)
+    
+    def ListItemsToListView(self):
+        # we'll get these from database
+        user = User("Emre","asd",oAuthKey="sl.BFXkZIrqN_OGrRHq52_QGsVpxncEvypnuYy88X7TdMUAk7S_0l5rfh3xB2qjPBqJVxTquLTt2lbBHL4yK4jG62qkhlrzeTh1IvgimVqQhf2Y2F-dZpZsI4dR-wjekDgu4-GIjlrAPVi6")
+        dbx = dropbox.Dropbox(user.oAuthKey)
+        listOfNames = self.ReturnFileNames(dbx)
+        self.listWidget.clear()
+        self.ShowInListView(listOfNames)
+
+
+        
+        
+        
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -29,9 +57,6 @@ class Ui_MainWindow(object):
         self.UserChooserCBox = QtWidgets.QComboBox(self.centralwidget)
         self.UserChooserCBox.setGeometry(QtCore.QRect(640, 460, 131, 31))
         self.UserChooserCBox.setObjectName("UserChooserCBox")
-        self.listView = QtWidgets.QListView(self.centralwidget)
-        self.listView.setGeometry(QtCore.QRect(20, 10, 401, 531))
-        self.listView.setObjectName("listView")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(580, 460, 61, 31))
         self.label.setObjectName("label")
@@ -63,6 +88,13 @@ class Ui_MainWindow(object):
         self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
         self.graphicsView.setGeometry(QtCore.QRect(460, 10, 301, 221))
         self.graphicsView.setObjectName("graphicsView")
+        self.listWidget = QtWidgets.QListWidget(self.centralwidget)
+        self.listWidget.setGeometry(QtCore.QRect(20, 10, 391, 481))
+        self.listWidget.setObjectName("listWidget")
+        self.RefreshButton = QtWidgets.QPushButton(self.centralwidget)
+        self.RefreshButton.setGeometry(QtCore.QRect(300, 500, 101, 31))
+        self.RefreshButton.setObjectName("RefreshButton")
+        self.RefreshButton.clicked.connect(self.ListItemsToListView)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -92,5 +124,16 @@ class Ui_MainWindow(object):
         self.DeleteFileButton.setText(_translate("MainWindow", "Seçilen Dosyayi Sil"))
         self.label_2.setText(_translate("MainWindow", "Dosya numarasi seçiniz"))
         self.pushButton.setText(_translate("MainWindow", "Seçilen Dosyayı İndir"))
+        self.RefreshButton.setText(_translate("MainWindow", "Yenile"))
 
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    #ui.ListItemsToListView()
+    MainWindow.show()
+    
+    sys.exit(app.exec_())

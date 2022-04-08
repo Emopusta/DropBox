@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     
     def ListItemsToListView(self):
         # we'll get these from database
-        user = User("Emre","asd",oAuthKey="sl.BFXkZIrqN_OGrRHq52_QGsVpxncEvypnuYy88X7TdMUAk7S_0l5rfh3xB2qjPBqJVxTquLTt2lbBHL4yK4jG62qkhlrzeTh1IvgimVqQhf2Y2F-dZpZsI4dR-wjekDgu4-GIjlrAPVi6")
+        user = User("Emre","asd",oAuthKey="")
         dbx = dropbox.Dropbox(user.oAuthKey)
         listOfNames = self.ReturnFileNames(dbx)
         self.listWidget.clear()

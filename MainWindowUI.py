@@ -67,6 +67,7 @@ class Ui_MainWindow(object):
         f = open("ABC.txt","w")                    
         metadata,res = dbx.files_download("abc.txt")     //dropbox file path
         f.write(res.content)"""
+        #to-do fix DownloadFile func
         dbx = dropbox.Dropbox(self.user.oAuthKey)
         print(self.listWidget.currentItem().text())
         dbx.files_download()

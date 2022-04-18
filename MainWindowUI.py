@@ -18,9 +18,11 @@ class Ui_MainWindow(object):
     user = User()
     file = ""
     fileName = ""
+    
     def ReturnFileNames(self,dbx):
         x = str(dbx.files_list_folder("")).split(",")
         listOfNames = []
+        
         for i in x:
             if i.find("name=")==1:
                 listOfNames.append(i)
@@ -59,9 +61,16 @@ class Ui_MainWindow(object):
             print("dosya seciniz")
 
     
-    def deneme(self):
-        
+    def DownloadFile(self):
+        """access_token = '**********************'
+        dbx = dropbox.Dropbox(access_token)
+        f = open("ABC.txt","w")                    
+        metadata,res = dbx.files_download("abc.txt")     //dropbox file path
+        f.write(res.content)"""
+        dbx = dropbox.Dropbox(self.user.oAuthKey)
         print(self.listWidget.currentItem().text())
+        dbx.files_download()
+        
         
 
     def setupUi(self, MainWindow):
@@ -79,7 +88,7 @@ class Ui_MainWindow(object):
         self.AddUserButton = QtWidgets.QPushButton(self.centralwidget)
         self.AddUserButton.setGeometry(QtCore.QRect(500, 290, 75, 23))
         self.AddUserButton.setObjectName("AddUserButton")
-        self.AddUserButton.clicked.connect(self.deneme)
+        self.AddUserButton.clicked.connect(self.DownloadFile)
         self.UserChooserCBox = QtWidgets.QComboBox(self.centralwidget)
         self.UserChooserCBox.setGeometry(QtCore.QRect(640, 460, 131, 31))
         self.UserChooserCBox.setObjectName("UserChooserCBox")
@@ -103,9 +112,6 @@ class Ui_MainWindow(object):
         self.DeleteFileButton = QtWidgets.QPushButton(self.centralwidget)
         self.DeleteFileButton.setGeometry(QtCore.QRect(440, 450, 121, 41))
         self.DeleteFileButton.setObjectName("DeleteFileButton")
-        self.FileMarker = QtWidgets.QSpinBox(self.centralwidget)
-        self.FileMarker.setGeometry(QtCore.QRect(470, 410, 51, 22))
-        self.FileMarker.setObjectName("FileMarker")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(440, 370, 121, 21))
         self.label_2.setObjectName("label_2")
@@ -150,7 +156,7 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.UserRemover.setText(_translate("MainWindow", "Seçilen kullanıcıyı sil"))
         self.DeleteFileButton.setText(_translate("MainWindow", "Seçilen Dosyayi Sil"))
-        self.label_2.setText(_translate("MainWindow", "Dosya numarasi seçiniz"))
+        self.label_2.setText(_translate("MainWindow", "Dosya Seçiniz."))
         self.pushButton.setText(_translate("MainWindow", "Seçilen Dosyayı İndir"))
         self.RefreshButton.setText(_translate("MainWindow", "Yenile"))
 

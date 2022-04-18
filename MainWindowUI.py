@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
     
     def ListItemsToListView(self):
         # we'll get these from database
-        self.user = User("Emre","asd",oAuthKey="")
+        self.user = User("Emre","asd",oAuthKey="sl.BF_2p_WIZnmdW4MIWDb6yqSDCr-f7M1B0PGIyDyzNZ1OfuP6yDWnzx1F3cVAAD7sB0WN6P642bwPfEJ47THcBBfk1MhW-axNmueWMLcAL8bRhzCP3TMQpCH5iUXm6MSxT288jw69FHuF")
         dbx = dropbox.Dropbox(self.user.oAuthKey)
         listOfNames = self.ReturnFileNames(dbx)
         self.listWidget.clear()
@@ -58,6 +58,10 @@ class Ui_MainWindow(object):
         else :
             print("dosya seciniz")
 
+    
+    def deneme(self):
+        
+        print(self.listWidget.currentItem().text())
         
 
     def setupUi(self, MainWindow):
@@ -75,6 +79,7 @@ class Ui_MainWindow(object):
         self.AddUserButton = QtWidgets.QPushButton(self.centralwidget)
         self.AddUserButton.setGeometry(QtCore.QRect(500, 290, 75, 23))
         self.AddUserButton.setObjectName("AddUserButton")
+        self.AddUserButton.clicked.connect(self.deneme)
         self.UserChooserCBox = QtWidgets.QComboBox(self.centralwidget)
         self.UserChooserCBox.setGeometry(QtCore.QRect(640, 460, 131, 31))
         self.UserChooserCBox.setObjectName("UserChooserCBox")
@@ -113,6 +118,7 @@ class Ui_MainWindow(object):
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.listWidget.setGeometry(QtCore.QRect(20, 10, 391, 481))
         self.listWidget.setObjectName("listWidget")
+        
         self.RefreshButton = QtWidgets.QPushButton(self.centralwidget)
         self.RefreshButton.setGeometry(QtCore.QRect(300, 500, 101, 31))
         self.RefreshButton.setObjectName("RefreshButton")

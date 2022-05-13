@@ -1,6 +1,7 @@
 import dropbox as dropbox
 from User import User 
-class DropboxManager:
+
+class DropboxManager(User):
 
     def __init__(self,admin):
         dbx = dropbox.Dropbox(admin.oAuthKey)

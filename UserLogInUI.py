@@ -14,9 +14,12 @@ from UserManager import UserManager
 from MainWindowUI import Ui_MainWindow
 
 class Ui_LogInWindow(object):
-    
+    user = User()
     def GetUser(self):
         return self.user
+
+    def SendDataToMainWindow(self):#sends user information to mainwindow
+        self.ui.user = self.user
 
     def ClickedEnter(self):
         self.user = User(self.UserName.text(),self.Password.text())
@@ -28,6 +31,7 @@ class Ui_LogInWindow(object):
             self.ui = Ui_MainWindow()
             self.ui.setupUi(self.MainWindow)
             self.ui.ListItemsToListView()
+            self.SendDataToMainWindow()
             self.MainWindow.show()
             
             

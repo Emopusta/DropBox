@@ -49,7 +49,8 @@ class Ui_MainWindow(object):
         self.label_2.setText(fname[0])
         self.file = fname[0]
         self.fileName = "/"+splitted[len(splitted)-1]
-        print(self.file,self.fileName)
+        print("Secilen dosyanin path : ",self.file)
+        
     
     def UploadDataFunc(self):
         dbx = dropbox.Dropbox(self.user.oAuthKey)
@@ -60,6 +61,7 @@ class Ui_MainWindow(object):
             print("dosya gonderildi")
         else :
             print("dosya seciniz")
+        self.ListItemsToListView()#refresh list widget
 
     
     def DownloadFile(self):
@@ -72,8 +74,16 @@ class Ui_MainWindow(object):
         metadata,res = dbx.files_download(file)     
         f.write(str(res.content))
         f.close()
+        self.ListItemsToListView()#refresh list widget
+        print(file," isimli dosya yuklendi")
         
-        
+    def DeleteFile(self):
+        dbx = dropbox.Dropbox(self.user.oAuthKey)
+        file = self.listWidget.currentItem().text()
+        file = "/"+file   
+        dbx.files_delete(file)
+        self.ListItemsToListView()#refresh list widget
+        print(file," isimli dosya silindi.")
         
 
     def setupUi(self, MainWindow):
@@ -114,6 +124,7 @@ class Ui_MainWindow(object):
         self.DeleteFileButton = QtWidgets.QPushButton(self.centralwidget)
         self.DeleteFileButton.setGeometry(QtCore.QRect(440, 450, 121, 41))
         self.DeleteFileButton.setObjectName("DeleteFileButton")
+        self.DeleteFileButton.clicked.connect(self.DeleteFile)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(440, 370, 121, 21))
         self.label_2.setObjectName("label_2")

@@ -28,23 +28,27 @@ class Ui_LogInWindow(object):
         cursor.execute(""" SELECT * FROM Users """)
         #not done yet 
         list_all = cursor.fetchall()
-        print(list_all)
+        for i in list_all:
+            if self.user.userName == i[1] and self.user.password == i[2]:
+                return True
+        return False
         
 
 
     def ClickedEnter(self):
         self.user = User(self.UserName.text(),self.Password.text())
-        #userManager = UserManager()
-        #dropboxManager = DropboxManager(user) 
-        #print(userManager.PrintName(user))
-        if self.user.userName == "Emre" :
-            self.SearchUser()
+        
+        if self.SearchUser():
+            print("giris yapiliyor...")
             self.MainWindow = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow()
             self.ui.setupUi(self.MainWindow)
             self.ui.ListItemsToListView()
             self.SendDataToMainWindow()
             self.MainWindow.show()
+        else:
+            print("yanlis kullanici adi veya sifre.")
+            
             
             
 

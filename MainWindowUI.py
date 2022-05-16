@@ -36,7 +36,6 @@ class Ui_MainWindow(object):
             self.listWidget.addItem(i)
     
     def ListItemsToListView(self):
-        print(self.user.userName)
         dbx = dropbox.Dropbox(self.user.oAuthKey)
         listOfNames = self.ReturnFileNames(dbx)
         self.listWidget.clear()
@@ -92,7 +91,6 @@ class Ui_MainWindow(object):
         self.AddUserButton = QtWidgets.QPushButton(self.centralwidget)
         self.AddUserButton.setGeometry(QtCore.QRect(500, 290, 75, 23))
         self.AddUserButton.setObjectName("AddUserButton")
-        #self.AddUserButton.clicked.connect(self.DownloadFile)
         self.UserChooserCBox = QtWidgets.QComboBox(self.centralwidget)
         self.UserChooserCBox.setGeometry(QtCore.QRect(640, 460, 131, 31))
         self.UserChooserCBox.setObjectName("UserChooserCBox")

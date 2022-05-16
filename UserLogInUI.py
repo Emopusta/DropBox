@@ -24,8 +24,9 @@ class Ui_LogInWindow(object):
         self.ui.user = self.user
 
     def SearchUser(self):
-        
+
         cursor.execute(""" SELECT * FROM Users """)
+        #not done yet 
         list_all = cursor.fetchall()
         print(list_all)
         

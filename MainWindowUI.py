@@ -20,6 +20,7 @@ class Ui_MainWindow(object):
     user = User()
     file = ""
     fileName = ""
+
     
     def ReturnFileNames(self,dbx):
         x = str(dbx.files_list_folder("")).split(",")
@@ -27,7 +28,7 @@ class Ui_MainWindow(object):
         
         for i in x:
             if i.find("name=")==1:
-                listOfNames.append(i)
+                listOfNames.append(i[7:len(i)-1])
         return listOfNames
     
     def ShowInListView(self,listOfNames):
@@ -63,15 +64,16 @@ class Ui_MainWindow(object):
 
     
     def DownloadFile(self):
-        """access_token = '**********************'
-        dbx = dropbox.Dropbox(access_token)
-        f = open("ABC.txt","w")                    
-        metadata,res = dbx.files_download("abc.txt")     //dropbox file path
-        f.write(res.content)"""
-        #to-do fix DownloadFile func
+        
         dbx = dropbox.Dropbox(self.user.oAuthKey)
-        print(self.listWidget.currentItem().text())
-        dbx.files_download()
+        file = self.listWidget.currentItem().text()
+        #temp_file = "C:/Users/emred/Desktop/"+file
+        f = open("C:/Users/emred/Desktop/"+file,"w") #yüklemek istediği yeri kullanıcıya seçtir to-do
+        file = "/"+file                  
+        metadata,res = dbx.files_download(file)     
+        f.write(str(res.content))
+        f.close()
+        
         
         
 
@@ -90,7 +92,7 @@ class Ui_MainWindow(object):
         self.AddUserButton = QtWidgets.QPushButton(self.centralwidget)
         self.AddUserButton.setGeometry(QtCore.QRect(500, 290, 75, 23))
         self.AddUserButton.setObjectName("AddUserButton")
-        self.AddUserButton.clicked.connect(self.DownloadFile)
+        #self.AddUserButton.clicked.connect(self.DownloadFile)
         self.UserChooserCBox = QtWidgets.QComboBox(self.centralwidget)
         self.UserChooserCBox.setGeometry(QtCore.QRect(640, 460, 131, 31))
         self.UserChooserCBox.setObjectName("UserChooserCBox")
@@ -120,6 +122,7 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(440, 500, 121, 41))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.DownloadFile)
         self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
         self.graphicsView.setGeometry(QtCore.QRect(460, 10, 301, 221))
         self.graphicsView.setObjectName("graphicsView")

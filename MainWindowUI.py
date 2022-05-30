@@ -69,7 +69,7 @@ class Ui_MainWindow(object):
         dbx = dropbox.Dropbox(self.user.oAuthKey)
         file = self.listWidget.currentItem().text()
         #temp_file = "C:/Users/emred/Desktop/"+file
-        f = open("C:/Users/emred/Desktop/"+file,"w") #yüklemek istediği yeri kullanıcıya seçtir to-do
+        f = open("C:/Users/emre duman/Desktop/"+file,"w") #yüklemek istediği yeri kullanıcıya seçtir to-do
         file = "/"+file                  
         metadata,res = dbx.files_download(file)     
         f.write(str(res.content))

@@ -14,13 +14,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import dropbox as dropbox
 from DropboxManager import DropboxManager
 from User import User
-
+import EmopEncryption as EmopEncryption
 
 class Ui_MainWindow(object):
     user = User()
     file = ""
     fileName = ""
-
+    key = 123
     
     def ReturnFileNames(self,dbx):
         x = str(dbx.files_list_folder("")).split(",")
@@ -55,9 +55,10 @@ class Ui_MainWindow(object):
     def UploadDataFunc(self):
         dbx = dropbox.Dropbox(self.user.oAuthKey)
         dbx.users_get_current_account()
+        EmopEncryption.EncrpytFile(self.file,self.key)
         if self.file != "":
             with open(self.file,"rb") as f:
-                dbx.files_upload(bytes(f.read()),self.fileName,mute = True)
+                dbx.files_upload(bytes(f.read()),self.fileName,mute = True)#to do create new file that includes encrypted file name and data then upload
             print("dosya gonderildi")
         else :
             print("dosya seciniz")

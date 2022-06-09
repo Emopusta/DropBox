@@ -15,6 +15,7 @@ import dropbox as dropbox
 from DropboxManager import DropboxManager
 from User import User
 import EmopEncryption as EmopEncryption
+from EmopDataBase import *
 
 class Ui_MainWindow(object):
     user = User()
@@ -41,7 +42,25 @@ class Ui_MainWindow(object):
         self.listWidget.clear()
         self.ShowInListView(listOfNames)
 
+    def AddFriend(self,UserId,friendUserId,friendPublicKey):#find userid and more with Users.Id 
+       #not done yet
+        sql=""" INSERT INTO Friends(UserId,friendUserId,friendPublicKey) VALUES(?,?,?)  """
+        data = (UserId,friendUserId,friendPublicKey)
+        cursor.execute(sql,data)
+        conn.commit()
+    
+    def ListUserFriendsInComboBox(self):
+        
+        sql = """SELECT * FROM Friends"""
+        cursor.execute(sql)
+        listOfFriends = cursor.fetchall()
+        for i in listOfFriends:
+            if i[0] == self.user.Id:
+                self.UserChooserCBox.addItem(str(i[2]))
+                
 
+
+        
         
     def ChooseFileFromBrowser(self):
         fname = QtWidgets.QFileDialog.getOpenFileName()

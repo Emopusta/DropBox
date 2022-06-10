@@ -95,7 +95,7 @@ def EncrpytFile(fileAddress,key):
         f.write(encryptedText)
 
 
-def DecryptFile(key,fileAddress):
+def DecryptFile(fileAddress,key):
     with open(fileAddress,"r") as f:
         encryptedText = f.read()
     text = EmopDecryption(encryptedText,key)

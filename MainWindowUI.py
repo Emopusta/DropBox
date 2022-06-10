@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
     file = ""
     fileName = ""
     key = 123
-    
+    desktopPath = "C:/Users/emred/Desktop/"
     def ReturnFileNames(self,dbx):
         x = str(dbx.files_list_folder("")).split(",")
         listOfNames = []
@@ -74,36 +74,48 @@ class Ui_MainWindow(object):
     def UploadDataFunc(self):
         dbx = dropbox.Dropbox(self.user.oAuthKey)
         dbx.users_get_current_account()
-        EmopEncryption.EncrpytFile(self.file,self.key)
-        if self.file != "":
-            with open(self.file,"rb") as f:
-                dbx.files_upload(bytes(f.read()),self.fileName,mute = True)#to do create new file that includes encrypted file name and data then upload
-            print("dosya gonderildi")
-        else :
-            print("dosya seciniz")
+        try:
+            EmopEncryption.EncrpytFile(self.file,self.key)
+            if self.file != "":
+                with open(self.file,"rb") as f:
+                    dbx.files_upload(bytes(f.read()),self.fileName,mute = True)#to do create new file that includes encrypted file name and data then upload
+                print("dosya gonderildi")
+            EmopEncryption.DecryptFile(self.file,self.key)
+        except:
+            print("dosya seciniz.")
+           
         self.ListItemsToListView()#refresh list widget
 
     
     def DownloadFile(self):
         
         dbx = dropbox.Dropbox(self.user.oAuthKey)
-        file = self.listWidget.currentItem().text()
-        #temp_file = "C:/Users/emred/Desktop/"+file
-        f = open("C:/Users/emre duman/Desktop/"+file,"w") #yüklemek istediği yeri kullanıcıya seçtir to-do
+        try:
+            file = self.listWidget.currentItem().text()
+        except:
+            print("dosya seciniz.")
+            return
+        #temp_file = self.desktopPath+file
+        f = open(self.desktopPath+file,"w") #yüklemek istediği yeri kullanıcıya seçtir to-do
         file = "/"+file                  
         metadata,res = dbx.files_download(file)     
-        f.write(str(res.content))
+        fileData = str(res.content)
+        f.write(fileData[2:len(fileData)-1:1])
         f.close()
+        EmopEncryption.DecryptFile(self.desktopPath+file,self.key)
         self.ListItemsToListView()#refresh list widget
         print(file," isimli dosya yuklendi")
         
     def DeleteFile(self):
         dbx = dropbox.Dropbox(self.user.oAuthKey)
-        file = self.listWidget.currentItem().text()
-        file = "/"+file   
-        dbx.files_delete(file)
-        self.ListItemsToListView()#refresh list widget
-        print(file," isimli dosya silindi.")
+        try:
+            file = self.listWidget.currentItem().text()
+            file = "/"+file   
+            dbx.files_delete(file)
+            self.ListItemsToListView()#refresh list widget
+            print(file," isimli dosya silindi.")
+        except:
+            print("dosya seciniz.")
         
 
     def setupUi(self, MainWindow):

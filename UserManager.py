@@ -1,6 +1,6 @@
 from User import User
 
-class UserManager():
+class UserManager:
     
 
     def LogIn(self):

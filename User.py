@@ -8,7 +8,7 @@ class User:
         self.Id = Id 
         self.userName = userName
         self.password = password
-        self.oAuthKey = "sl.BJPzQCSbwk0yZAtKfmgEDiQALUAgjfdWthIZXz7khrDe0DlruzUcQ-R2N7FiAgViJvKVzUGSsC0N8wYhPQkwY-6o8IzbcaoDZXbGMECTa9lgf07Q9hiEBQqJcJxokucug4U5xg9V3v16"
+        self.oAuthKey = ""
         
         
     def SetUserId(self,Id):

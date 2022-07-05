@@ -106,7 +106,7 @@ Yaptığımız araştırmalar ve incelediğimiz başka çözümler ile edindiği
 [2] https://tr.wikipedia.org/wiki/Blowfish \
 [3] https://medium.com/@hicranozkan/simetrik-ve-asimetrik-anahtarl%C4%B1-%C5%9Fifreleme-algoritmalar%C4%B1-a60a4e0eb079 \
 [4] https://tr.wikipedia.org/wiki/Enigma_makinesi \
-[5] https://tr.wikipedia.org/wiki/Atbash#:~:text=Atbash%2C%20(%C4%B0branice%3A%20%D7%90%D7%AA%D7%91%D7%A9)
+[5] https://tr.wikipedia.org/wiki/Atbash#:~:text=Atbash%2C%20(%C4%B0branice%3A%20%D7%90%D7%AA%D7%91%D7%A9) \
 [6] https://tr.wikipedia.org/wiki/Vigen%C3%A8re_%C5%9Fifrelemesi \
 [7] https://medium.com/@hicranozkan/simetrik-ve-asimetrik-anahtarl%C4%B1-%C5%9Fifreleme-algoritmalar%C4%B1-a60a4e0eb079 \
 [8] https://medium.com/@hicranozkan/simetrik-ve-asimetrik-anahtarl%C4%B1-%C5%9Fifreleme-algoritmalar%C4%B1-a60a4e0eb079 \

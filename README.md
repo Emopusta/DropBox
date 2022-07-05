@@ -1,14 +1,13 @@
  
 
-Dönem Projesi - Rapor
+##Dönem Projesi - Rapor
 
-Projede Kullanılacaklar
 
-Proje Başlığı
-Dropbox ile Güvenli Veri Paylaşımı
+##Proje Başlığı
+#Dropbox ile Güvenli Veri Paylaşımı
 
-Takım Üyeleri
-⦁	Emre Duman 031990002 (⦁	031990002⦁	@ogr.uludag.edu.tr)
+#Takım Üyeleri
+⦁	Emre Duman 031990002 (⦁	031990002⦁	@ogr.uludag.edu.tr)\
 2.
 3.
 

@@ -7,9 +7,9 @@
 ## Dropbox ile Güvenli Veri Paylaşımı
 
 ### Takım Üyeleri
-1.	Emre Duman 031990002 (⦁	031990002⦁	@ogr.uludag.edu.tr)\
-2. \
-3. \
+1.	Emre Duman 031990002
+2. 
+3. 
 
 > Not: Takımda bulunan 2 ve 3 numaralı arkadaşlar proje ödevindeki görevlerini yerine getirmemiştir. Bu sebeple proje tam doğrulukta çalışmamaktadır.
 
